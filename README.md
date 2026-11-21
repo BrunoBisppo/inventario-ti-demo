@@ -4,6 +4,10 @@ Demonstração de um sistema de gestão de equipamentos de TI. Explore o painel,
 
 ![Painel com totais, alertas e atividade recente](docs/prints/painel.png)
 
+## Desenvolvimento
+
+Esta demonstração foi desenvolvida com inteligência artificial (IA), usando o OpenAI Codex.
+
 ## O que você pode fazer
 
 | Tela | Recursos |
