@@ -1,49 +1,61 @@
-# Inventário de T.I. — Demonstração
+# Inventário de TI
 
-Aplicação para acompanhar equipamentos de TI por categoria, setor e situação. A demonstração abre com 12 equipamentos e 4 setores fictícios.
+Demonstração de um sistema de gestão de equipamentos de TI. Explore o painel, cadastre um equipamento e acompanhe a mudança no histórico. A aplicação abre com **12 equipamentos e 4 setores fictícios**.
 
-## O que dá para experimentar
+![Painel com totais, alertas e atividade recente](docs/prints/painel.png)
 
-- Consultar o painel de alertas e atividades recentes.
-- Buscar e filtrar equipamentos e abrir os detalhes de cada registro.
-- Cadastrar, editar e excluir equipamentos e setores.
-- Ver o histórico de alterações e gerar relatórios em PDF.
+## O que você pode fazer
 
-## Rodar no computador
+| Tela | Recursos |
+| --- | --- |
+| Painel | Consultar totais, alertas e atividades recentes |
+| Inventário | Buscar e filtrar equipamentos por categoria, setor e situação |
+| Cadastro | Criar, editar e excluir registros com campos específicos por tipo de equipamento |
+| Setores | Organizar os equipamentos e gerenciar os setores |
+| Histórico | Consultar inclusões, alterações e exclusões |
+| Relatórios | Gerar PDFs a partir da seleção no inventário |
 
-Com Node.js 24 ou superior, execute na pasta do projeto:
+## Rodar localmente
 
-```sh
+Você precisa do Node.js 24 ou superior e do npm. Na pasta do projeto, execute:
+
+```bash
 npm ci
 npm run dev
 ```
 
-Abra o endereço local exibido no terminal. A aplicação usa React, TypeScript e Vite. O navegador guarda as alterações no armazenamento local. Use **Reiniciar** no menu para recuperar os exemplos originais.
+Abra o endereço mostrado no terminal. A demonstração abre diretamente no painel, sem login ou configuração de servidor. Cada navegador guarda suas alterações no armazenamento local. Use **Reiniciar** no menu para voltar aos dados iniciais.
 
-O acesso abre direto no painel. Login, administração de usuários e backup de produção ficam fora da demonstração. Os exemplos estão em `src/demonstracao.ts`.
+## Roteiro de apresentação
 
-Para verificar o código e gerar a versão estática:
+1. Abra **Todos** para ver equipamentos de várias categorias e experimentar os filtros.
+2. Clique em **Novo equipamento**, escolha um setor e preencha o cadastro.
+3. Abra **Histórico** para conferir a inclusão ou volte ao inventário para gerar um PDF.
 
-```sh
+## Galeria
+
+| Inventário | Cadastro |
+| --- | --- |
+| ![Lista de equipamentos e filtros](docs/prints/inventario.png) | ![Formulário de equipamento](docs/prints/cadastro.png) |
+
+| Histórico | Setores |
+| --- | --- |
+| ![Histórico de alterações](docs/prints/historico.png) | ![Setores e totais de equipamentos](docs/prints/setores.png) |
+
+## Tecnologias e estrutura
+
+- **React e TypeScript** para a interface e as regras do inventário.
+- **Vite** para desenvolvimento e compilação.
+- **jsPDF e jsPDF-AutoTable** para os relatórios em PDF.
+- [src/demonstracao.ts](src/demonstracao.ts) contém os exemplos e a persistência local.
+- [docs/prints](docs/prints) reúne as capturas da versão de demonstração.
+
+A demonstração usa dados fictícios e opera no navegador. Login, gestão de usuários e backup de produção ficam fora deste repositório.
+
+Para verificar o código e testar a compilação localmente:
+
+```bash
 npm run lint
 npm run build
 npm run preview
 ```
-
-## Capturas de tela
-
-### Painel
-
-![Painel com resumo, alertas e atividades recentes](docs/prints/painel.png)
-
-### Inventário
-
-![Lista de equipamentos fictícios com filtros e status](docs/prints/inventario.png)
-
-### Cadastro
-
-![Formulário de cadastro de equipamento](docs/prints/cadastro.png)
-
-### Histórico e setores
-
-[Abrir captura do histórico](docs/prints/historico.png) · [Abrir captura dos setores](docs/prints/setores.png)
