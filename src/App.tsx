@@ -6,7 +6,7 @@ import { Icone } from './icones'
 import Inventario from './Inventario'
 import Setores from './Setores'
 import { CATEGORIAS, iniciais } from './tipos'
-import type { ReactNode } from 'react'
+import type { FormEvent, ReactNode } from 'react'
 import { listarInventario, perfilDemo, restaurarDemonstracao } from './demonstracao'
 import { useDialogos } from './contextoDialogos'
 import './App.css'
@@ -24,7 +24,42 @@ function lerTema(): Tema {
   }
 }
 
-function Painel() {
+const chaveSessao = 'inventario-ti-demo:sessao'
+
+function Login({ entrar }: { entrar: () => void }) {
+  function enviar(evento: FormEvent<HTMLFormElement>) {
+    evento.preventDefault()
+    const dados = new FormData(evento.currentTarget)
+    if (!String(dados.get('usuario') ?? '').trim() || !String(dados.get('senha') ?? '').trim()) return
+    entrar()
+  }
+
+  return (
+    <div className="tela-login">
+      <form className="login" onSubmit={enviar} autoComplete="off">
+        <div className="login-marca">
+          <span className="logo"><Icone nome="servidor" tamanho={22} /></span>
+          <div>
+            <h1>Inventário de T.I</h1>
+            <p>Demonstração com dados fictícios</p>
+          </div>
+        </div>
+        <p>Use qualquer usuário e senha fictícios para entrar. Evite usar sua senha real.</p>
+        <label>
+          Usuário
+          <input name="usuario" placeholder="Ex.: visitante" required />
+        </label>
+        <label>
+          Senha
+          <input name="senha" type="password" autoComplete="new-password" placeholder="Ex.: demo123" required />
+        </label>
+        <button className="principal grande" type="submit">Entrar</button>
+      </form>
+    </div>
+  )
+}
+
+function Painel({ sair }: { sair: () => void }) {
   const [{ equipamentos: itens, setores }, setDados] = useState(listarInventario)
   const dialogos = useDialogos()
   const [secao, setSecao] = useState('painel')
@@ -148,6 +183,7 @@ function Painel() {
             }}>
               Reiniciar
             </button>
+            <button className="sair" onClick={sair}>Sair</button>
           </div>
         </div>
       </aside>
@@ -199,10 +235,22 @@ class LimiteDeErro extends Component<{ children: ReactNode }, { erro: Error | nu
 }
 
 export default function App() {
+  const [aberto, setAberto] = useState(() => sessionStorage.getItem(chaveSessao) === 'aberto')
+
+  function entrar() {
+    sessionStorage.setItem(chaveSessao, 'aberto')
+    setAberto(true)
+  }
+
+  function sair() {
+    sessionStorage.removeItem(chaveSessao)
+    setAberto(false)
+  }
+
   return (
     <LimiteDeErro>
       <DialogosProvider>
-        <Painel />
+        {aberto ? <Painel sair={sair} /> : <Login entrar={entrar} />}
       </DialogosProvider>
     </LimiteDeErro>
   )

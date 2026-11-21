@@ -24,7 +24,7 @@ npm ci
 npm run dev
 ```
 
-Abra o endereço mostrado no terminal. A demonstração abre diretamente no painel, sem login ou configuração de servidor. Cada navegador guarda suas alterações no armazenamento local. Use **Reiniciar** no menu para voltar aos dados iniciais.
+Abra o endereço mostrado no terminal. Na tela de login demonstrativa, preencha os dois campos com qualquer valor fictício (por exemplo, visitante e demo123). Os valores são descartados ao entrar. Cada navegador guarda suas alterações no armazenamento local. Use **Reiniciar** no menu para voltar aos dados iniciais.
 
 ## Roteiro de apresentação
 
@@ -50,7 +50,7 @@ Abra o endereço mostrado no terminal. A demonstração abre diretamente no pain
 - [src/demonstracao.ts](src/demonstracao.ts) contém os exemplos e a persistência local.
 - [docs/prints](docs/prints) reúne as capturas da versão de demonstração.
 
-A demonstração usa dados fictícios e opera no navegador. Login, gestão de usuários e backup de produção ficam fora deste repositório.
+A demonstração usa dados fictícios e opera no navegador. O login simula a entrada no sistema. Gestão de usuários e backup de produção ficam fora deste repositório.
 
 Para verificar o código e testar a compilação localmente:
 
